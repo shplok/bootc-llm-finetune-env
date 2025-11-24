@@ -8,7 +8,7 @@ A containerized environment for fine-tuning large language models with GPU suppo
 - GPU-accelerated training (NVIDIA CUDA / AMD ROCm)
 - YAML-based configuration (no code changes needed)
 - Pre-configured with PyTorch, Transformers, and ML tools
-- Ready-to-use training scripts
+- Plug & Play training setup
 
 ## Prerequisites
 
