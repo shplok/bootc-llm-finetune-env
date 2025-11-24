@@ -18,7 +18,7 @@ RUN dnf install -y \
 RUN python3 -m venv /opt/llm-venv
 ENV PATH="/opt/llm-venv/bin:${PATH}"
 
-# Install shared ML tooling (fixed PyTorch version)
+# Install shared ML tooling
 RUN pip install --upgrade pip && \
     pip install \
         torch==2.9.1 \
@@ -30,7 +30,8 @@ RUN pip install --upgrade pip && \
         sentencepiece \
         evaluate \
         huggingface_hub \
-        safetensors
+        safetensors \
+        pyyaml
 
 # Create directory for shared scripts
 RUN mkdir -p /opt/llm-setup

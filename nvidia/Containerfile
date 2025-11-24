@@ -1,5 +1,19 @@
 FROM localhost/bootc-llm-base:latest
 
+# Add NVIDIA CUDA repository
+RUN dnf install -y dnf-plugins-core && \
+    dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora39/x86_64/cuda-fedora39.repo
+
+# Install NVIDIA CUDA toolkit
+RUN dnf install -y \
+    cuda-toolkit-12-6 \
+    && dnf clean all
+
+# Set CUDA environment variables
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+
 # Replace CPU torch with NVIDIA GPU version
 RUN pip uninstall -y torch && \
-    pip install torch==2.9.1 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121
+    pip install torch torchvision torchaudio

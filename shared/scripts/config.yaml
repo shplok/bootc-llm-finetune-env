@@ -1,0 +1,20 @@
+model:
+  name: gpt2
+  device_map: auto
+
+dataset:
+  name: wikitext
+  subset: wikitext-2-raw-v1
+  split: train
+  text_column: text
+  max_length: 512
+
+training:
+  output_dir: ./outputs
+  num_epochs: 3
+  learning_rate: 2e-5
+  batch_size: 4
+  warmup_steps: 100
+  logging_steps: 10
+  save_steps: 500
+  fp16: true
