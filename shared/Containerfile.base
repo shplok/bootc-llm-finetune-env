@@ -1,0 +1,44 @@
+# Shared LLM base for both NVIDIA and AMD
+FROM quay.io/fedora-bootc/fedora-bootc:latest
+
+# Update & install general dependencies
+RUN dnf install -y \
+    python3 \
+    python3-pip \
+    python3-virtualenv \
+    git \
+    wget \
+    curl \
+    unzip \
+    gcc \
+    gcc-c++ \
+    make \
+    && dnf clean all
+
+# Create global venv for all users
+RUN python3 -m venv /opt/llm-venv
+ENV PATH="/opt/llm-venv/bin:${PATH}"
+
+# Install shared ML tooling (no GPU wheels here!)
+RUN pip install --upgrade pip && \
+    pip install \
+        torch==2.3.1 \
+        transformers \
+        datasets \
+        accelerate \
+        peft \
+        bitsandbytes \
+        sentencepiece \
+        evaluate \
+        huggingface_hub \
+        safetensors
+
+# Create directory for shared scripts
+RUN mkdir -p /opt/llm-setup
+COPY shared/scripts/ /opt/llm-setup/
+
+# Make scripts executable
+RUN chmod -R +x /opt/llm-setup/
+
+# Automatically activate venv for shell sessions
+RUN echo 'source /opt/llm-venv/bin/activate' >> /etc/bashrc
