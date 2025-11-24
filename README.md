@@ -180,28 +180,6 @@ dataset:
   name: /custom-data
 ```
 
-### Using LoRA/PEFT
-
-Enable in config:
-```yaml
-lora:
-  enabled: true
-  r: 8
-  lora_alpha: 16
-  target_modules:
-    - q_proj
-    - v_proj
-```
-
-### Multiple Configs
-
-Create different configs for different experiments:
-```bash
-cp shared/scripts/config.yaml shared/scripts/config-llama.yaml
-# Edit config-llama.yaml
-/opt/llm-setup/finetune.sh /opt/llm-setup/config-llama.yaml
-```
-
 ## Contributing
 
 All contributions are welcome! Please open an issue or pull request.
