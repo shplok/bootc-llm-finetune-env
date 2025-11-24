@@ -45,7 +45,7 @@ Edit `shared/scripts/config.yaml` to customize your fine-tuning:
 
 ```yaml
 model:
-  name: gpt2  # Change to your model (e.g., meta-llama/Llama-2-7b-hf)
+  name: gpt2  # Change to model of interest (e.g., meta-llama/Llama-2-7b-hf)
 
 dataset:
   name: wikitext  # Change to your dataset
