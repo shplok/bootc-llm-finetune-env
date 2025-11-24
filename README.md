@@ -141,7 +141,7 @@ training:
 
 ### GPU Not Detected
 
-Check if PyTorch sees your GPU:
+Check if PyTorch detects the GPU:
 ```bash
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 ```
@@ -204,8 +204,4 @@ cp shared/scripts/config.yaml shared/scripts/config-llama.yaml
 
 ## Contributing
 
-Contributions welcome! Please open an issue or pull request.
-
-## License
-
-[Add your license here]
+All contributions are welcome! Please open an issue or pull request.
