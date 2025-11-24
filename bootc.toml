@@ -1,7 +1,5 @@
 [customizations]
-
 [customizations.files]
-
 [customizations.packages]
 packages = ["python3", "python3-pip", "git"]
 
