@@ -1,1 +1,5 @@
-FROM ghcr.io/shplok/bootc-llm-base:latest
+FROM localhost/bootc-llm-base:latest
+
+# Replace CPU torch with AMD GPU version
+RUN pip uninstall -y torch && \
+    pip install torch==2.9.1 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm6.1

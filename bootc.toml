@@ -1,0 +1,14 @@
+[customizations]
+
+[customizations.files]
+
+[customizations.packages]
+packages = ["python3", "python3-pip", "git"]
+
+[output]
+imageType = "container"
+filename = "bootc-llm-finetune"
+
+[output.container]
+imageName = "localhost/bootc-llm-finetune"
+imageTag = "latest"
